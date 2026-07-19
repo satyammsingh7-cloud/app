@@ -28,22 +28,22 @@ data:
       <h1>🎬 Welcome to My Movie Collection</h1>
 
       <div class="movie">
-        <h2>Interstellar ⭐⭐⭐⭐⭐</h2>
+        <h2>Interstellar 9/10 IMDB </h2>
         <p>Science Fiction</p>
       </div>
 
       <div class="movie">
-        <h2>Inception ⭐⭐⭐⭐⭐</h2>
+        <h2>Inception 9/10 IMDB</h2>
         <p>Thriller</p>
       </div>
 
       <div class="movie">
-        <h2>The Dark Knight ⭐⭐⭐⭐⭐</h2>
+        <h2>The Dark Knight 9/10 IMDB</h2>
         <p>Action</p>
       </div>
 
       <div class="movie">
-        <h2>Avatar ⭐⭐⭐⭐</h2>
+        <h2>Avatar 7/10 IMDB</h2>
         <p>Fantasy</p>
       </div>
 

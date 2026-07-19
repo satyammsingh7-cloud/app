@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: movie-site
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>🎬 My Movie Collection</title>
+      <style>
+        body{
+          background:#111;
+          color:white;
+          font-family:Arial;
+          padding:40px;
+        }
+        .movie{
+          background:#222;
+          margin:15px;
+          padding:15px;
+          border-radius:10px;
+        }
+      </style>
+    </head>
+    <body>
+
+      <h1>🎬 Welcome to My Movie Collection</h1>
+
+      <div class="movie">
+        <h2>Interstellar ⭐⭐⭐⭐⭐</h2>
+        <p>Science Fiction</p>
+      </div>
+
+      <div class="movie">
+        <h2>Inception ⭐⭐⭐⭐⭐</h2>
+        <p>Thriller</p>
+      </div>
+
+      <div class="movie">
+        <h2>The Dark Knight ⭐⭐⭐⭐⭐</h2>
+        <p>Action</p>
+      </div>
+
+      <div class="movie">
+        <h2>Avatar ⭐⭐⭐⭐</h2>
+        <p>Fantasy</p>
+      </div>
+
+    </body>
+    </html>

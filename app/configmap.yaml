@@ -4,48 +4,188 @@ metadata:
   name: movie-site
 data:
   index.html: |
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>My Movie Collection</title>
-      <style>
-        body{
-          background:#111;
-          color:white;
-          font-family:Arial;
-          padding:40px;
-        }
-        .movie{
-          background:#222;
-          margin:15px;
-          padding:15px;
-          border-radius:10px;
-        }
-      </style>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineVerse - Top Movie Recommendations</title>
 
-      <h1>🎬 Welcome to My Movie Collection</h1>
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+header{
+    background:#020617;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid #ef4444;
+}
+header h1{
+    margin:0;
+    color:#ef4444;
+    font-size:3rem;
+}
+.hero{
+    text-align:center;
+    padding:40px 20px;
+}
+.hero h2{
+    font-size:2rem;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+    padding:30px;
+}
+.card{
+    background:#1e293b;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-8px);
+}
+.card img{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+}
+.card-content{
+    padding:15px;
+}
+.card h3{
+    margin:0 0 10px 0;
+    font-size:1rem;
+}
+.rating{
+    color:#fbbf24;
+}
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
 
-      <div class="movie">
-        <h2>Interstellar 9/10 IMDB </h2>
-        <p>Science Fiction</p>
-      </div>
+<header>
+<h1>🎬 CineVerse</h1>
+<p>Top Movie Recommendations Powered by Kubernetes</p>
+</header>
 
-      <div class="movie">
-        <h2>Inception 9/10 IMDB</h2>
-        <p>Thriller</p>
-      </div>
+<section class="hero">
+<h2>Top Rated Movies of All Time</h2>
+<p>Browse some of the greatest movies ever made.</p>
+</section>
 
-      <div class="movie">
-        <h2>The Dark Knight 9/10 IMDB</h2>
-        <p>Action</p>
-      </div>
+<div class="grid" id="movies"></div>
 
-      <div class="movie">
-        <h2>Avatar 7/10 IMDB</h2>
-        <p>Fantasy</p>
-      </div>
+<footer>
+Running on Kubernetes + NGINX 🚀
+</footer>
 
-    </body>
-    </html>
+<script>
+const movies = [
+{
+title:"The Shawshank Redemption",
+rating:"9.3",
+poster:"https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+},
+{
+title:"The Godfather",
+rating:"9.2",
+poster:"https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+},
+{
+title:"The Dark Knight",
+rating:"9.0",
+poster:"https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+},
+{
+title:"Pulp Fiction",
+rating:"8.9",
+poster:"https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+},
+{
+title:"Fight Club",
+rating:"8.8",
+poster:"https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg"
+},
+{
+title:"Forrest Gump",
+rating:"8.8",
+poster:"https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+},
+{
+title:"Inception",
+rating:"8.8",
+poster:"https://image.tmdb.org/t/p/w500/8IB2e4r4oVhHnANbnm7O3Tj6tF8.jpg"
+},
+{
+title:"Interstellar",
+rating:"8.7",
+poster:"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+},
+{
+title:"The Matrix",
+rating:"8.7",
+poster:"https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
+},
+{
+title:"Gladiator",
+rating:"8.5",
+poster:"https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
+},
+{
+title:"Parasite",
+rating:"8.5",
+poster:"https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+},
+{
+title:"Whiplash",
+rating:"8.5",
+poster:"https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg"
+},
+{
+title:"Oppenheimer",
+rating:"8.4",
+poster:"https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg"
+},
+{
+title:"Dune",
+rating:"8.2",
+poster:"https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"
+},
+{
+title:"Avengers Endgame",
+rating:"8.4",
+poster:"https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+}
+];
+
+const grid = document.getElementById("movies");
+
+for(let i=0;i<50;i++){
+ const movie = movies[i % movies.length];
+ grid.innerHTML += `
+ <div class="card">
+   <img src="${movie.poster}" alt="${movie.title}">
+   <div class="card-content">
+      <h3>#${i+1} ${movie.title}</h3>
+      <div class="rating">⭐ ${movie.rating}/10</div>
+   </div>
+ </div>`;
+}
+</script>
+
+</body>
+</html>
+```
